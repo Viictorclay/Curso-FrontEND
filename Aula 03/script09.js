@@ -7,7 +7,7 @@ function names(nick) { // FUNÇÃO para guardar os nomes
 }
 
 do { // LOOPING com do..while para sempre pedir um nome até que o usuario queira sair
-  let nick = window.prompt("digete EXIT para sair\nDIGITE UM NOME: ");
+  let nick = window.prompt("digite EXIT para sair\nDIGITE UM NOME: ");
 
   if (nick.toLowerCase() === 'exit') { // condição de permanencia 
     window.alert('Fim da seção.');
