@@ -3,7 +3,7 @@
 let NickNames = [] // ARRAY = Lista em um ordem específica
 
 function names(nick) { // FUNÇÃO para guardar os nomes
-  NickNames.push(nick);
+  NickNames.push(nick); // .push = para subir o nick para função / para .push A — o nome
 }
 
 do { // LOOPING com do..while para sempre pedir um nome até que o usuario queira sair
