@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+button {
+    height: 50px;
+    width: 80px;
+    margin-left: 5px;
+}
+#btm01 {
+    margin-left: 15px;
+}
