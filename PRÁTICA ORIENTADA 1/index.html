@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prática Orientada - Módulo 01</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 id="titulo">Prática Orientada </h1>
+    <h2>
+        <strong>1.</strong> Uma função que recebe dois números e retorne o maior.
+    </h2>
+    <button onclick="iniciar()">Começar</button>
+    <section id="result">O resultado vai aparecer aqui..</section>
+    <h2>
+        <strong>2.</strong> Implementando uma função que verifica se os números são par ou ímpar.
+    </h2>
+    <button onclick="verificar()">Verificar</button>
+    <section id="resultVRF">A verificação vai aparecer aqui</section>
+    <h2>
+        <strong>3.</strong> Função que receba um nome e retorna uma saudação personalizada.
+    </h2>
+    <button onclick="saudacao()">Saudação</button>
+    <section id="resultSD">Saudação aparecerar aqui.</section>
+    <h2>
+        <strong>4.</strong> Função que calcula o fatorial de um número.
+    </h2>
+    <p>Escreva um número (entre 1 e 21) na caixa a seguir e te mostrarei o Fatorial dele.</p
+    <section id="entrada">
+        <form action="#" method="get">
+            <p>
+                <label for="fnum">Número: </label>
+                <input type="number" name="num" id="fnum" max="21" min="1" placeholder="Número: ">
+                <!-- Vamos limitar os números entre 1 e 21, pois não existe fatorial de número negativo (0! = 1) e o fatorial de 22 já é um número muito grande para ser representado de forma simples na tela -->
+                <input type="submit" value="Fatorial" formaction="javascript:fatorial()">
+            </p>
+        </form>
+    </section>
+    <section id="saida">
+        <p>Preencha os dados acima e aperte o botão.</p>
+    </section>
+    <h2>
+        <strong>5.</strong> Função para converter temperatura Celsius em Fahrenheit.
+    </h2>
+    <section id="entradaCF">
+        <form action="#" method="get">
+            <p>
+                <label for="celsius">Temperatura (°C): </label>
+                <input type="number" name="celsius" id="celsius" min="-89" max="57" placeholder="Digite a temperatura">
+                <input type="submit" value="Converter" formaction="javascript:converterTemperatura()">
+            </p>
+        </form>
+    </section>
+    <section id="saidaCF">
+        <p>Preencha os dados acima e aperte o botão.</p>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

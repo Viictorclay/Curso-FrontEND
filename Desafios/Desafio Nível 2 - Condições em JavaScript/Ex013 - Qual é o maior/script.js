@@ -1,6 +1,6 @@
 function iniciar() {
-    let n1 = Number(window.prompt('Digiete um valor:'))
-    let n2 = Number(window.prompt('Digete outro valor:'))
+    let n1 = Number(window.prompt('Digite um valor:'))
+    let n2 = Number(window.prompt('Digite outro valor:'))
 
     let res = document.getElementById('result')
     switch (true) {
