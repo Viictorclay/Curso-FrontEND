@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listagem de Alunos | Sistema Acadêmico</title>
+  <link rel="stylesheet" href="../../assets/css/estilo.css">
+</head>
+<body>
+  <main class="conteudo">
+    <header class="topo-listagem">
+    <h2>Listagem de Alunos</h2>
+    <form class="form-filtro" method="get" action="">
+      <input type="search" name="busca" placeholder="🔍 Buscar por nome ou matrícula...">
+      <button type="submit">Pesquisar</button>
+    </form>
+  </header>
+
+
+    <!-- TABELA DE ALUNOS -->
+    <section class="secao-tabela">
+      <table class="tabela">
+        <thead>
+          <tr>
+            <th>Matrícula</th>
+            <th>Nome</th>
+            <th>Disciplina</th>
+            <th>Turma</th>
+            <th class="acoes">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2024001</td>
+            <td>Maria Silva</td>
+            <td>Front End</td>
+            <td>A2024</td>
+            <td class="acoes">
+              <button class="btn-editar">✏️ Editar</button>
+              <button class="btn-excluir">🗑️ Excluir</button>
+            </td>
+          </tr>
+          <tr>
+            <td>2024002</td>
+            <td>João Santos</td>
+            <td>POO</td>
+            <td>B2024</td>
+            <td class="acoes">
+              <button class="btn-editar">✏️ Editar</button>
+              <button class="btn-excluir">🗑️ Excluir</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="info-tabela">Total de alunos: 2</p>
+    </section>
+  </main>
+</body>
+</html>
+

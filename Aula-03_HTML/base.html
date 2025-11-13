@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Acadêmico Integrado</title>
+  <link rel="stylesheet" href="assets/css/estilo.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <span>Sistema Acadêmico</span>
+    </div>
+    <nav>
+      <ul class="menu">
+        <li><a href="home.html" target="conteudo">Início</a></li>
+        <li class="submenu">
+          <a href="#">Alunos <i class="fa-solid fa-chevron-down"></i></a>
+          <ul>
+            <li><a href="template/aluno/aluno_list.html" target="conteudo">Listar</a></li>
+            <li><a href="template/aluno/aluno_form.html" target="conteudo">Manter</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Professores</a></li>
+        <li><a href="#">Disciplinas</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <iframe 
+      name="conteudo" 
+      id="conteudo-frame" 
+      src="home.html"
+      frameborder="0" 
+      title="Área de Conteúdo">
+    </iframe>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Sistema Acadêmico Integrado | HTML + CSS5</p>
+  </footer>
+
+</body>
+</html>
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Acadêmico Integrado</title>
+  <link rel="stylesheet" href="assets/css/estilo.css">
+</head>
+
+<body>
+  <!-- CABEÇALHO -->
+  <header class="navbar">
+    <div class="logo">
+      🎓 <span>Sistema Acadêmico</span>
+    </div>
+
+    <nav>
+      <ul class="menu">
+        <li><a href="home.html" target="conteudo-dinamico">Início</a></li>
+
+        <li class="submenu">
+          <a href="#">Alunos ▼</a>
+          <ul>
+            <li><a href="template/aluno/aluno_list.html" target="conteudo-dinamico">Listar</a></li>
+            <li><a href="template/aluno/aluno_form.html" target="conteudo-dinamico">Manter</a></li>
+          </ul>
+        </li>
+
+        <li class="submenu">
+          <a href="#">Professores ▼</a>
+           <ul>
+            <li><a href="template/professor/prof_list.html" target="conteudo-dinamico">Listar</a></li>
+            <li><a href="template/professor/prof_form.html" target="conteudo-dinamico">Manter</a></li>
+          </ul>
+        </li>
+        
+        <li><a href="#">Disciplinas</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- CONTEÚDO CENTRAL -->
+  <main>
+    <iframe 
+      src="home.html"
+      name="conteudo-dinamico"
+      id="area-conteudo"
+      title="Área de Conteúdo Dinâmico">
+    </iframe>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="footer">
+    <p>&copy; 2025 Sistema Acadêmico Integrado | HTML + CSS</p>
+  </footer>
+</body>
+
+</html>

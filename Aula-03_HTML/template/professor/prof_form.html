@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Professor | Sistema Acadêmico</title>
+    <link rel="stylesheet" href="../../assets/css/estilo.css">
+
+</head>
+
+<body>
+    <main class="conteudo">
+        <h2>Cadastro / Edição de Professor</h2>
+
+        <form id="form-prof" method="POST" action="#">
+
+            <fieldset>
+                <legend>Dados Pessoais</legend>
+
+                <div class="campo">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" placeholder="Digite o nome completo">
+                </div>
+
+                <div class="campo">
+                    <label for="cpf">CPF</label>
+                    <input type="number" id="cpf" name="cpf"
+                    placeholder="123.456.789-00" required>
+                </div>
+
+                <div class="campo">
+                    <label for="formacao">Formação / Titulação</label>
+                    <input type="text" name="formacao" id="formacao" placeholder="">
+                </div>
+
+                <div class="campo">
+                    <label for="email" name="email">Telefone / E-mail</label>
+                    <input type="text" id="email" placeholder="exaemplo@academico.edu.br" required>
+                    <input type="number" id="fone" placeholder="ex:(DDD) 9 9999-9999">
+                </div>
+
+                <div class="campo">
+                    <label for="siape" name="siape">Número de registro (SIAPE)</label>
+                    <input type="text" id="siape" placeholder="ex:1789342">
+                </div>
+
+            </fieldset>
+
+            <fieldset>
+                <legend>Informações da Turma</legend>
+
+                <div class="campo">
+                    <label for="disciplina">Disciplinas</label>
+
+                    <div class="multiselect">
+                        <div class="select-box" id="selectBox">
+                        <span class="selected-text">Selecione as disciplinas...</span>
+                        </div>
+
+                        <div class="checkboxes" id="checkboxes">
+                        <label><input type="checkbox" value="Front-END"> Front-END</label>
+                        <label><input type="checkbox" value="POO"> POO</label>
+                        <label><input type="checkbox" value="Lógica de Programação"> Lógica de Programação</label>
+                        <label><input type="checkbox" value="Banco de Dados"> Banco de Dados</label>
+                        <label><input type="checkbox" value="Engenharia de Software"> Engenharia de Software</label>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="turma">Turma</label>
+                    <input type="text" name="turma" id="turma" placeholder="ex:A2025">
+                </div>
+
+            </fieldset>
+            <div class="botoes-crud">
+                <button type="submit" class="btn-editar">Salvar</button>
+                <button type="reset" class="btn-excluir">Limpar</button>
+            </div>
+
+        </form>
+    </main>
+</body>
+
+<script src="../../assets/js/multselect.js"></script>
+
+</html>
