@@ -8,7 +8,56 @@
 </head>
 <body>
     <main class="conteudo">
-        <h2>Listagem de Professores</h2>
+        <header class="topo-listagem">
+            <h2>Listagem de Professores</h2>
+            <form class="form-filtro" method="get" action="">
+                <input type="search" name="busca" placeholder="🔍 Buscar por..">
+                <button title="submit">Pesquisar</button>
+            </form>
+        </header>
+
+        <section class="secao-tabela">
+            <table class="tabela">
+
+                <thead>
+                    <tr>
+                        <th>Matrícula</th>
+                        <th>Nome</th>
+                        <th>Disciplina</th>
+                        <th>Turma</th>
+                        <th class="acoes">Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>123432</td>
+                        <td>Igor Vascelos</td>
+                        <td>Back-END</td>
+                        <td>A2025.2</td>
+                        <td class="acoes">
+                            <button class="btn-editar">✏️ Editar</button>
+                            <button class="btn-excluir">🗑️ Excluir</button>
+                        </td>
+                        
+                    </tr>
+
+                    <tr>
+                        <td>4524542</td>
+                        <td>Josiane Lopes</td>
+                        <td>Front-END</td>
+                        <td>A2025.2</td>
+                        <td class="acoes">
+                            <button class="btn-editar">✏️ Editar</button>
+                            <button class="btn-excluir">🗑️ Excluir</button>
+                        </td>
+                           
+                    </tr>
+                </tbody>
+            </table>
+
+            <p class="info-tabela"> Total de professores: 2</p>
+        </section>
 
     </main>
 </body>
