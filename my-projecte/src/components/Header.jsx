@@ -1,8 +1,8 @@
-function Header(props) {
+function Header({ onOpenMenu }) {
     return (
         <header>
-            <h1>{props.title}</h1>
-            <button id="menuBtn">☰</button>
+            <h1>Dasboards Line</h1>
+            <button id="menuBtn" onClick={onOpenMenu}>☰</button>
             <p>Acesse, compare e visualize painéis antigos e atuais</p>
         </header>
     );
