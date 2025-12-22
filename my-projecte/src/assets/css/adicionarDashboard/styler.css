@@ -1,0 +1,590 @@
+/* ======== RESET GLOBAL ======== */
+/* Remove margens e espaçamentos padrão dos navegadores e define box-sizing para controle total do layout */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Define configurações básicas do documento */
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: "Segoe UI", Roboto, sans-serif; /* Fonte moderna e limpa */
+  background-color: #f6f8fa; /* Cor de fundo suave */
+  color: #333; /* Cor padrão do texto */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* 1vh = 1% da altura da tela visível -> 100vh altura total da janela */
+  /*
+  <body>
+    ├─ <header> (fixo)
+    ├─ <main>   (flexível e rolável)
+     └─ <footer> (fixo)
+  </body>
+
+  */
+}
+
+/* ======== NAVBAR SUPERIOR ======== */
+/* Estiliza o cabeçalho fixo superior */
+.navbar {
+  background-color: #ffffff; /* Fundo branco */
+  border-bottom: 1px solid #e5e7eb; /* Linha sutil separando do conteúdo */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra leve */
+  display: flex; /* Organiza logo e menu na mesma linha */
+  justify-content: space-between; /* Espaça os elementos */
+  align-items: center; /* Centraliza verticalmente */
+  padding: 0.8rem 2rem; /* Espaçamento interno */
+  position: sticky; /* Fixa no topo da página */
+  top: 0; /* Posição inicial no topo */
+  z-index: 1000; /* Mantém sobre outros elementos */
+}
+
+/* Define estilo da área do logotipo e nome */
+.logo {
+  font-weight: 600; /* Negrito moderado */
+  font-size: 1.2rem; /* 1rem = 16px */
+  color: #1e293b; /* Azul acinzentado */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Espaço entre ícone e texto */
+}
+
+/* ======== MENU SUPERIOR ======== */
+/* Remove marcadores e organiza os links do menu */
+.menu {
+  list-style: none; /* Remove os marcadores */
+   /* permitindo que você controle o alinhamento, a ordem e o espaçamento dos seus filhos 
+   diretos (os itens da lista, ou flex items). */
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* Espaçamento entre os itens */
+}
+
+/* Links do menu principal */
+.menu a {
+  text-decoration: none; /* Remove sublinhado */
+  color: #1e293b; /* Cor padrão */
+  font-weight: 500;
+  transition: color 0.2s; /* Transição suave no hover */
+}
+
+/* Cor do link ao passar o mouse */
+.menu a:hover {
+  color: #2563eb; /* Azul vivo */
+}
+
+/* ======== SUBMENU CORRIGIDO ======== */
+/* Configuração do item que contém submenu */
+.submenu {
+  position: relative; /* Necessário para posicionar o submenu */
+}
+
+/* Submenu oculto por padrão */
+.submenu > ul {
+  display: none;
+  position: absolute; /* Fica sobreposto */
+  background-color: white;
+  list-style: none;
+  /* margin-top: 0.4rem;*/
+  padding: 0.5rem 0;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  min-width: 160px;
+  z-index: 999; /* Garante visibilidade sobre outros elementos */
+}
+
+/* Exibe submenu ao passar o mouse */
+.submenu:hover > ul,
+.submenu ul:hover {
+  display: block;
+}
+
+/* Estilo dos itens dentro do submenu */
+.submenu ul li {
+  padding: 0.6rem 1.2rem;
+}
+
+/* Links dentro do submenu */
+.submenu ul li a {
+  color: #1e293b;
+  text-decoration: none; /* underline, overline, line-through */ 
+  display: block;
+  /*
+   Ocupação Total da Largura: O <a> passa a ocupar 100%
+    da largura do seu elemento pai (<li>). Isso é crucial
+    em um submenu para que o link preencha todo o espaço do item da lista, 
+    tornando toda a área clicável.
+
+   Controle de Dimensões: Permite que você defina width 
+   e height (se necessário) e aplique padding e 
+   margin vertical de forma consistente.
+
+   Área Clicável Maior: Como o link se expande para
+    preencher o <li>, o usuário tem uma área de clique
+    maior e mais fácil de acertar, melhorando a 
+    usabilidade do menu dropdown.
+  */
+}
+
+/* Efeito hover no submenu */
+.submenu ul li a:hover {
+  background-color: #f3f4f6;
+  color: #2563eb;
+}
+
+/* ======== ÁREA PRINCIPAL / IFRAME ======== */
+/* Estrutura principal do conteúdo (que contém o iframe) */
+main {
+  width: 100%; /* faz com que o elemento <main> ocupe a largura total (100%) de seu contêiner pai. */
+  height: 100%;/* altura total (100%)*/
+  display: flex; 
+  flex-direction: column;
+  align-items: stretch;
+  /*O stretch faz com que os itens filhos se estiquem para preencher toda a largura do contêiner*/
+  justify-content: flex-start;
+  /* Controla o alinhamento dos itens ao longo do eixo principal 
+  (que é o eixo vertical, ou coluna, neste caso). O flex-start posiciona os itens no início do 
+  contêiner (no topo). */
+  flex: 1;          /* faz o main ocupar todo o espaço restante do body */
+  overflow: auto;   /* permite rolagem apenas no corpo principal */
+  /*
+    flex: 1;Diz ao navegador que o <main> deve crescer e ocupar o espaço disponível 
+    entre o header e o footer (estrutura de layout em “coluna flex”).
+    overflow: auto; Garante que, se o conteúdo dentro do <main> (como o iframe)
+     for maior que a tela, só o conteúdo role, sem criar 
+     uma segunda barra de rolagem no <body>.
+  */
+}
+
+/* O iframe exibe páginas internas */
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  background-color: #f6f8fa;
+}
+
+/* ======== RODAPÉ ======== */
+.footer {
+  background-color: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  color: #6b7280;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  margin-top: auto; /* Fixa no final da tela */
+}
+
+/* ======== CONTEÚDO INTERNO (PÁGINAS NO IFRAME) ======== */
+/* Caixa que envolve o conteúdo das páginas internas */
+.conteudo {
+  display: block;
+  width: 95%;
+  max-width: 1200px;
+  margin: 2rem auto; /* Centraliza horizontalmente */
+  background: #ffffff;
+  border-radius: 10px; /* Cantos arredondados */
+  padding: 2rem 3rem; /* Espaçamento interno */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06); /* Sombra suave */
+}
+
+/* Estilo para títulos das páginas */
+.conteudo h2 {
+  font-size: 1.8rem;
+  color: #1e293b;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+/* ======== TÍTULO E FILTRO ======== */
+/* Contêiner para título e barra de pesquisa */
+.topo-listagem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem; /* Espaçamento vertical entre elementos */
+  margin-bottom: 1.25rem;
+}
+
+/* Estilo do título da listagem */
+.topo-listagem h2 {
+  font-size: 1.8rem;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+/* Container do formulário de filtro */
+.form-filtro {
+  display: flex;
+  /*
+  Transforma o .form-filtro em um contêiner flexível. Isso é o que permite que os 
+  elementos internos (como campos de input e botões) fiquem lado a lado, em linha.
+  */
+  gap: 0.6rem;
+  /*
+  Define o espaçamento entre os itens filhos diretos (os flex items), como o campo de busca
+   e o botão de filtro. A unidade 0.6rem (relativa ao tamanho da fonte raiz) 
+   garante uma separação consistente entre eles.
+  */
+  width: 100%;
+  max-width: 480px; /* Garantir que nunca passe de 480 pixels de largura */
+}
+
+/* Campo de pesquisa */
+.form-filtro input[type="search"] {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #f9fafb;
+  transition: all 0.2s;
+}
+
+/* Efeito ao focar no campo de busca */
+.form-filtro input[type="search"]:focus {
+  border-color: #2563eb;
+  background-color: white;
+  outline: none;
+}
+
+/* Botão de pesquisa */
+.form-filtro button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.8rem 1.2rem;
+  font-weight: 600; /* define a espessura */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Efeito hover do botão */
+.form-filtro button:hover {
+  background-color: #1e40af;
+}
+
+/* ======== TABELA DE LISTAGEM ======== */
+/* Container geral da tabela */
+.secao-tabela {
+  width: 100%;
+  margin-top: 0.5rem;
+  overflow-x: auto; /* Permite rolagem horizontal em telas pequenas */
+}
+
+/* Tabela principal */
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* Cabeçalho da tabela */
+.tabela thead {
+  background-color: #f1f5f9;
+}
+
+/* Células de cabeçalho */
+.tabela th {
+  text-align: left;
+  padding: 0.9rem 1rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+/* Células do corpo da tabela */
+.tabela td {
+  border-top: 1px solid #e2e8f0;
+  padding: 0.9rem 1rem;
+  vertical-align: middle;
+  color: #1e293b;
+}
+
+/* Centraliza a última coluna (Ações) */
+.tabela th:last-child {
+  text-align: center;
+}
+
+/* Efeito hover nas linhas */
+.tabela tbody tr:hover {
+  background-color: #f8fafc;
+  transition: background-color 0.2s;
+}
+
+/* ======== BOTÕES DE AÇÃO ======== */
+/* Centraliza os botões na célula */
+.acoes {
+  text-align: center;
+  white-space: nowrap; /* Impede quebra de linha */
+}
+
+/* Botões de editar e excluir */
+.btn-editar,
+.btn-excluir {
+  border: none;
+  padding: 0.5rem 0.9rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+/* Botão de edição (azul) */
+.btn-editar {
+  background-color: #3b82f6;
+  color: #fff;
+}
+
+/* Efeito hover do botão de edição */
+.btn-editar:hover {
+  background-color: #1d4ed8;
+  transform: scale(1.05);
+}
+
+/* Botão de exclusão (vermelho) */
+.btn-excluir {
+  background-color: #ef4444;
+  color: #fff;
+  margin-left: 0.4rem;
+}
+
+/* Efeito hover do botão de exclusão */
+.btn-excluir:hover {
+  background-color: #b91c1c;
+  transform: scale(1.05);
+}
+
+/* ======== INFO DA TABELA ======== */
+/* Texto de resumo abaixo da tabela */
+.info-tabela {
+  text-align: right;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+/* ======== FORMULÁRIOS ======== */
+/* Formulário geral */
+form {
+  width: 100%;
+}
+
+/* Fieldset organiza campos relacionados */
+fieldset {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: #f9fafb;
+}
+
+/* Legenda do fieldset */
+legend {
+  font-weight: 600;
+  color: #1e293b;
+  padding: 0 0.5rem;
+}
+
+/* Container de cada campo */
+.campo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  
+}
+
+/* Rótulos dos campos */
+.campo label {
+  font-weight: 500;
+  color: #475569;
+  margin-bottom: 0.4rem;
+  
+}
+
+/* Campos de entrada de texto, select e textarea */
+.campo input,
+.campo select,
+.campo textarea {
+  padding: 0.7rem 0.9rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.campo #fone {
+  margin-top: 5px;
+}
+
+/* Efeito ao focar no campo */
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  outline: none;
+}
+
+/* ======== BOTÕES DO FORM ======== */
+/* Área que contém os botões do formulário */
+.botoes-crud {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+/* Configuração dos botões de formulário */
+.btn-editar,
+.btn-excluir {
+  padding: 0.7rem 1.2rem;
+  border-radius: 6px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+/* Botão "Salvar" */
+.btn-editar {
+  background-color: #3b82f6;
+  color: white;
+}
+
+/* Efeito hover do botão "Salvar" */
+.btn-editar:hover {
+  background-color: #1d4ed8;
+  transform: scale(1.05);
+}
+
+/* Botão "Excluir" */
+.btn-excluir {
+  background-color: #ef4444;
+  color: white;
+}
+
+/* Efeito hover do botão "Excluir" */
+.btn-excluir:hover {
+  background-color: #b91c1c;
+  transform: scale(1.05);
+}
+
+/* ======== RESPONSIVIDADE ======== */
+/* Regras para telas menores (tablets e celulares) */
+@media (max-width: 768px) {
+  .conteudo {
+    padding: 1.2rem;
+    margin: 1rem;
+  }
+
+  .topo-listagem {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-filtro {
+    flex-direction: column; /* Empilha campo e botão verticalmente */
+  }
+
+  .form-filtro button {
+    width: 100%;
+  }
+
+  /* Esconde cabeçalho da tabela e transforma cada linha em um bloco */
+  .tabela thead {
+    display: none;
+  }
+
+  .tabela tr {
+    display: block;
+    margin-bottom: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  /* Exibe cada célula com o nome do campo à esquerda */
+  .tabela td {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+  }
+
+  /* Mostra o rótulo do campo antes do valor (modo mobile) 
+    O CSS força a exibição do rótulo (título da coluna) diretamente dentro de cada célula
+     de dados da tabela, transformando a apresentação de horizontal (típica de desktop) 
+     para vertical (típica de mobile).
+  */
+  .tabela td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #475569;
+  }
+}
+
+/* ==== MULTISELECT PERSONALIZADO ==== */
+.multiselect {
+  position: relative;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.select-box {
+  background: white;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.select-box:hover {
+  border-color: #2563eb;
+}
+
+.selected-text {
+  color: #475569;
+}
+
+.checkboxes {
+  display: none;
+  position: absolute;
+  top: 110%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 20;
+  padding: 6px 0;
+}
+
+.checkboxes label {
+  display: block;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.checkboxes label:hover {
+  background-color: #f1f5f9;
+}
+
+.checkboxes input[type="checkbox"] {
+  margin-right: 8px;
+  accent-color: #2563eb;
+}
+
+.multiselect.active .checkboxes {
+  display: block;
+}

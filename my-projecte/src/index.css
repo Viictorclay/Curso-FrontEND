@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+/* ======================================================
+   RESET / PADRÕES GLOBAIS
+====================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -7,70 +10,96 @@
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
+html, body {
+    overflow-x: hidden;
+}
+
 body {
     background-color: white;
     color: #333;
+    margin: 0;
 }
 
-/* GRID PRINCIPAL */
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Conteúdo principal cresce para empurrar o footer */
+main {
+    flex: 1;
+}
+
+
+/* ======================================================
+   GRID PRINCIPAL / LAYOUT
+====================================================== */
 .conteiner {
     display: grid;
     grid-template-areas: 
         "header"
         "main"
         "footer";
-    gap: 20px;
-    padding: 10px;
+    gap: 15px;
+    padding: 0;
+    width: 100%;
 }
 
-@media (min-width: 800px) {
-    .conteiner {
-        grid-template-columns: 1fr minmax(0, 800px) 1fr;
-        grid-template-areas: 
-            "header header header"
-            ". main ."
-            "footer footer footer";
-    }
-    main {
-        grid-area: main;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        margin: 0 auto;
-    }
-}
 
-/* HEADER */
+/* ======================================================
+   HEADER
+====================================================== */
 header {
     grid-area: header;
     background-color: rgb(40, 86, 65);
     color: white;
-    padding: 20px;
+    padding: 10px 12px;
     text-align: center;
     position: relative;
 }
 
-/* MENU LATERAL */
-/* BOTÃO HAMBÚRGUER */
+header h1 {
+    font-size: 25px;
+    margin-bottom: 6px;
+}
+
+header p {
+    font-size: 13px;
+    margin: 0;
+    opacity: 0.95;
+}
+
+
+/* ======================================================
+   MENU MOBILE (HAMBÚRGUER)
+====================================================== */
 #menuBtn {
     font-size: 20px;
     background: none;
     color: white;
     border: none;
     cursor: pointer;
-    margin-bottom: 8px;
     position: absolute;
     left: 10px;
-    top: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    width: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;
 }
 
-/* MENU LATERAL ESCONDIDO */
-#sideMenu {
 
+/* ======================================================
+   MENU LATERAL (MOBILE)
+====================================================== */
+#sideMenu {
     position: fixed;
     top: 0;
-    left: -260px; /* Escondido */
+    left: -260px;
     width: 250px;
     height: 100%;
     background-color: #2d2d2d;
@@ -80,21 +109,23 @@ header {
     z-index: 9999;
     box-shadow: 4px 0 10 rgba(0,0,0,0.4);
 }
-/*  MENU LATERAL APARECE*/
+
 #sideMenu.open {
-    left: 0; /* aparece */
+    left: 0;
 }
 
-/* BOTÃO FECHAR DO MENU */
+/* Botão fechar menu */
 #closeMenu {
     background: none;
     border: none;
     color: white;
     font-size: 20px;
     cursor: pointer;
-    margin-bottom: 20px;
-    float: right;
-    position: relative;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: auto;
+    padding: 4px 6px;
 }
 
 #sideMenu ul {
@@ -115,6 +146,27 @@ header {
     color: white;
 }
 
+
+/* Overlay do menu */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 9998;
+}
+
+
+/* ======================================================
+   MENU DESKTOP
+====================================================== */
+#desktopNav {
+    display: none;
+}
+
+
+/* ======================================================
+   INPUT DE BUSCA
+====================================================== */
 #search {
     width: 100%;
     max-width: 350px;
@@ -125,7 +177,10 @@ header {
     border: 1px solid #ccc;
 }
 
-/* CARDS */
+
+/* ======================================================
+   CARDS
+====================================================== */
 .cards {
     display: flex;
     flex-wrap: wrap;
@@ -143,7 +198,6 @@ header {
     box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
     text-align: center;
     transition: transform .2s, box-shadow .3s;
-    
 }
 
 .card:hover {
@@ -151,12 +205,142 @@ header {
     box-shadow: 0px 6px 20px rgba(0,0,0,0.25);
 }
 
-/* FOOTER */
+
+/* ======================================================
+   FOOTER
+====================================================== */
 footer {
     grid-area: footer;
     text-align: center;
     background-color: rgb(40, 86, 65);
     color: white;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 10px 10px;
+    margin-top: auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* ======================================================
+   FORMULÁRIOS / PAGES
+====================================================== */
+fieldset {
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #aaa;
+    padding: 15px;
+    background-color: #f7f7f7;
+}
+
+legend {
+    font-weight: bold;
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+input,
+select,
+textarea,
+button {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+
+/* Botão padrão */
+.B-send {
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.B-send:hover {
+    background-color: #283593;
+}
+
+
+/* ======================================================
+   RESPONSIVO
+====================================================== */
+@media (max-width: 799px) {
+    footer {
+        padding: 15px 10px;
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 800px) {
+
+    /* GRID CENTRALIZADO */
+    .conteiner {
+        grid-template-columns: 1fr minmax(0, 800px) 1fr;
+        grid-template-areas: 
+            "header header header"
+            ". main ."
+            "footer footer footer";
+    }
+
+    main {
+        grid-area: main;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    /* MENU */
+    #menuBtn {
+        display: none;
+    }
+
+    #sideMenu {
+        display: none;
+    }
+
+    #desktopNav {
+        display: block;
+        grid-area: header;
+        background-color: rgb(35, 77, 58);
+        color: white;
+        padding: 10px;
+        text-align: center;
+    }
+
+    #desktopNav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+        margin: 0;
+    }
+
+    #desktopNav li {
+        margin: 0;
+    }
+
+    #desktopNav .nav-link {
+        text-decoration: none;
+        color: #dcdcdc;
+        font-size: 16px;
+        transition: color 0.3s;
+    }
+
+    #desktopNav .nav-link:hover {
+        color: white;
+    }
 }
