@@ -18,17 +18,24 @@ body {
     background-color: white;
     color: #333;
     margin: 0;
+    min-height: 100vh;
 }
 
 #root {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* Conteúdo principal cresce para empurrar o footer */
+/* Conteúdo principal cresce para preencher o espaço disponível */
 main {
     flex: 1;
+    min-height: calc(100vh - 100px); /* 100vh menos altura aproximada do header e footer */
+    padding-top: 120px; /* Espaço para o header e nav fixos */
+    max-width: 800px; /* Limita largura máxima */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    overflow-x: hidden; /* Remove barra de rolagem horizontal */
 }
 
 
@@ -37,11 +44,11 @@ main {
 ====================================================== */
 .conteiner {
     display: grid;
-    grid-template-areas: 
+    grid-template-areas:
         "header"
         "main"
         "footer";
-    gap: 15px;
+    gap: 0;
     padding: 0;
     width: 100%;
 }
@@ -56,7 +63,13 @@ header {
     color: white;
     padding: 10px 12px;
     text-align: center;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
 }
 
 header h1 {
@@ -90,6 +103,54 @@ header p {
     align-items: center;
     justify-content: center;
     padding: 6px 10px;
+}
+
+/* ======================================================
+   BOTÃO DE TEMA (SWITCH)
+====================================================== */
+#temaBtn {
+    width: 60px;
+    height: 30px;
+    border-radius: 999px;
+    background-color: #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    border: none;
+}
+
+.dark #temaBtn {
+    background-color: #19202f;
+}
+
+#temaBtn span {
+    z-index: 1;
+    position: relative;
+}
+
+.circle {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    position: absolute;
+    left: 4px;
+    z-index: 2;
+    transform: translateX(0);
+}
+
+.dark .circle {
+    transform: translateX(30px);
 }
 
 
@@ -214,10 +275,11 @@ footer {
     text-align: center;
     background-color: rgb(40, 86, 65);
     color: white;
-    padding: 10px 10px;
-    margin-top: auto;
+    padding: 15.5px 10px;
     width: 100%;
     box-sizing: border-box;
+    font-size: 15px;
+
 }
 
 
@@ -277,7 +339,7 @@ button {
 ====================================================== */
 @media (max-width: 799px) {
     footer {
-        padding: 15px 10px;
+        padding: 17px 10px;
         font-size: 14px;
     }
 }
@@ -287,7 +349,7 @@ button {
     /* GRID CENTRALIZADO */
     .conteiner {
         grid-template-columns: 1fr minmax(0, 800px) 1fr;
-        grid-template-areas: 
+        grid-template-areas:
             "header header header"
             ". main ."
             "footer footer footer";
@@ -313,11 +375,15 @@ button {
 
     #desktopNav {
         display: block;
-        grid-area: header;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
         background-color: rgb(35, 77, 58);
         color: white;
         padding: 10px;
         text-align: center;
+        z-index: 999;
     }
 
     #desktopNav ul {
@@ -343,4 +409,122 @@ button {
     #desktopNav .nav-link:hover {
         color: white;
     }
+}
+
+/* ======================================================
+   TEMA ESCURO
+====================================================== */
+.dark {
+    background-color: #131313;
+    color: white;
+}
+
+.dark body {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark header {
+    background-color: #1a1a1a;
+    color: white;
+}
+
+.dark main {
+    background-color: #131313;
+    color: #e0e0e0;
+}
+
+.dark .conteudo {
+    background-color: #1a1a1a;
+}
+
+.dark #sideMenu {
+    background-color: #2d2d2d;
+    color: white;
+}
+
+.dark #sideMenu a {
+    color: #dcdcdc;
+}
+
+.dark #sideMenu a:hover {
+    color: white;
+}
+
+.dark #desktopNav {
+    background-color: #1a1a1a;
+    color: white;
+}
+
+.dark #desktopNav .nav-link {
+    color: #dcdcdc;
+}
+
+.dark #desktopNav .nav-link:hover {
+    color: white;
+}
+
+/* ======================================================
+   NAVIGATION ACTIVE STATE
+====================================================== */
+.nav-link.active {
+    color: green !important;
+    font-weight: bold;
+}
+
+.dark .card {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+    box-shadow: 0px 4px 10px rgba(255,255,255,0.1);
+}
+
+.dark .card:hover {
+    box-shadow: 0px 6px 20px rgba(255,255,255,0.15);
+}
+
+.dark footer {
+    background-color: #1a1a1a;
+    color: white;
+}
+
+.dark fieldset {
+    background-color: #2d2d2d;
+    border-color: #555;
+    color: #e0e0e0;
+}
+
+.dark legend {
+    color: #e0e0e0;
+}
+
+.dark label {
+    color: #e0e0e0;
+}
+
+.dark input,
+.dark select,
+.dark textarea {
+    background-color: #333;
+    color: #e0e0e0;
+    border-color: #555;
+}
+
+.dark .B-send {
+    background-color: #0e1037;
+    color: white;
+}
+
+.dark .B-send:hover {
+    background-color: #777;
+}
+
+.btmND {
+    width: 22px;
+    height: 22px;
+    background-color: white;
+    border-radius: 11px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    position: absolute;
+    left: 4px;
 }

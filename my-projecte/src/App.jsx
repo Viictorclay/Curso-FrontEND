@@ -8,7 +8,6 @@ import DesktopNav from "./components/DesktopNav.jsx";
 
 // páginas
 import Home from "./pages/Home.jsx";
-import Recentes from "./pages/Recentes.jsx";
 import Favoritos from "./pages/Favoritos.jsx";
 import AdicionarDashboard from "./pages/AdicionarDashboard.jsx";
 import TodosDashboards from "./pages/TodosDashboards.jsx";
@@ -16,10 +15,15 @@ import Contato from "./pages/contato.jsx";
 
 function App() {
   const [open, setOpen] = useState(false);
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
 
   return (
-    <>
-      <Header title="Dashboards Line" onOpenMenu={() => setOpen(true)} />
+    <div className={theme}>
+      <Header title="Dashboards Line" onOpenMenu={() => setOpen(true)} theme={theme} onToggleTheme={toggleTheme} />
 
       <Nav open={open} onOpenMenu={() => setOpen(false)} />
       <DesktopNav />
@@ -27,7 +31,6 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/recentes" element={<Recentes />} />
           <Route path="/favoritos" element={<Favoritos />} />
           <Route path="/adicionar" element={<AdicionarDashboard />} />
           <Route path="/todos" element={<TodosDashboards />} />
@@ -36,7 +39,7 @@ function App() {
       </main>
 
       <Footer />
-    </>
+    </div>
   );
 }
 

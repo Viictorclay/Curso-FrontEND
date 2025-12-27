@@ -1,0 +1,73 @@
+
+  
+
+.dashboard-img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-header h3 {
+  margin: 0;
+}
+
+.estrela {
+  font-size: 25px;
+  cursor: pointer;
+  color: #ccc;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.estrela.ativa {
+  color: #f1c40f;
+}
+
+.estrela:hover {
+  transform: scale(1.2);
+}
+
+.link {
+  display: inline-block;
+  margin-top: 6px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.data {
+  display: block;
+  margin-top: 4px;
+  color: #777;
+}
+
+.acoes {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+}
+
+.btn-excluir {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.edicao input {
+  display: block;
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 6px;
+}
+
+.vazio {
+  margin-top: 20px;
+  color: #999;
+}

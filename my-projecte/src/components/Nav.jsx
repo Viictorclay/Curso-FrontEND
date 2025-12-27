@@ -16,9 +16,6 @@ function Nav({ open, onOpenMenu }) {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/recentes" onClick={onOpenMenu} className="nav-link">
-                            📌 Recentes
-                        </Link>
                     </li>
                     <li>
                         <Link to="/favoritos" onClick={onOpenMenu} className="nav-link">

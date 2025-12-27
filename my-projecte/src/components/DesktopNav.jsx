@@ -10,11 +10,6 @@ function DesktopNav() {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/recentes" className="nav-link">
-                        📌 Recentes
-                    </Link>
-                </li>
-                <li>
                     <Link to="/favoritos" className="nav-link">
                         ⭐ Favoritos
                     </Link>
