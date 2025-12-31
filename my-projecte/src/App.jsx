@@ -11,7 +11,7 @@ import Home from "./pages/Home.jsx";
 import Favoritos from "./pages/Favoritos.jsx";
 import AdicionarDashboard from "./pages/AdicionarDashboard.jsx";
 import TodosDashboards from "./pages/TodosDashboards.jsx";
-import Contato from "./pages/contato.jsx";
+import Contato from "./pages/Contato.jsx";
 
 function App() {
   const [open, setOpen] = useState(false);
