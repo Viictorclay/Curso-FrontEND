@@ -188,6 +188,7 @@ iframe {
   background: #ffffff;
   border-radius: 10px; /* Cantos arredondados */
   padding: 2rem 3rem; /* Espaçamento interno */
+  margin-top: 20px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06); /* Sombra suave */
 }
 
