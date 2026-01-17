@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
-import Nav from "./components/Nav.jsx";
+import Nav from "./components/NavMobile.jsx";
 import DesktopNav from "./components/DesktopNav.jsx";
 
 // páginas

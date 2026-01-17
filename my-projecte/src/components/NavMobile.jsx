@@ -16,8 +16,6 @@ function Nav({ open, onOpenMenu }) {
                         </Link>
                     </li>
                     <li>
-                    </li>
-                    <li>
                         <Link to="/favoritos" onClick={onOpenMenu} className="nav-link">
                             ⭐ Favoritos
                         </Link>
