@@ -1,4 +1,5 @@
 import Nav from "./NavDesktop"; // ajuste o caminho se necessário
+import logo from "../assets/imgs/iconDashboard.png"; // ajuste o caminho se necessário
 
 function Header({ onOpenMenu, theme, onToggleTheme }) {
     return (
@@ -7,13 +8,12 @@ function Header({ onOpenMenu, theme, onToggleTheme }) {
             <div className="logo-container">
                 <img
                     id="imgICON"
-                    src="src/assets/imgs/iconDashboard.png"
+                    src={logo}
                     alt="Logo"
                 />
 
                 <div className="logo-texto">
                     <h1>Dashboards Line</h1>
-                    <p>Acesse, compare e visualize painéis antigos e atuais</p>
                 </div>
             </div>
 
@@ -58,6 +58,7 @@ function Header({ onOpenMenu, theme, onToggleTheme }) {
                     <div className="circle"></div>
                 </div>
             </div>
+
         </header>
     );
 }

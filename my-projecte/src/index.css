@@ -11,6 +11,7 @@
 html,
 body {
   overflow-x: hidden;
+
 }
 
 body {
@@ -18,7 +19,9 @@ body {
   color: #333;
 }
 
-#root {
+:root {
+  --header-height: 75px;
+  --info-bar-height: 30px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -27,9 +30,11 @@ body {
 
 /* Conteúdo principal cresce para preencher o espaço disponível */
 main {
+  padding-top: calc(var(--header-height) + var(--info-bar-height));
+
   flex: 1;
   min-height: calc(100vh - 100px);
-  padding-top: 120px;
+  
   max-width: 800px;
   margin: 0 auto;
   overflow-x: hidden;
@@ -54,6 +59,8 @@ main {
    HEADER
 ====================================================== */
 header {
+  height: var(--header-height);
+
   grid-area: header;
   background-color: rgb(40, 86, 65);
   color: white;
@@ -61,11 +68,16 @@ header {
   top: 0;
   left: 0;
   right: 0;
+  width: 100%;
+  height: 75px;
   z-index: 1000;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 12px 24px;
+
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.315);
 }
 
 header h1 {
@@ -101,13 +113,39 @@ header p {
 .logo-text h1 {
   margin: 0;
   font-size: 20px;
-  color: #fff;
+  color: #c7c7c7;
 }
 
-.logo-text p {
-  margin: 0;
-  font-size: 13px;
-  opacity: 0.9;
+.info-bar {
+  top: var(--header-height);
+  height: var(--info-bar-height);
+
+  position: fixed;
+  background-color: #1b1b1b;
+  color: #ffffff;
+  top: 75px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  
+  font-size: 15px;
+  text-align: center;
+
+  padding: 6px 12px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  z-index: 999;
+
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.315);
+}
+
+.light .info-bar {
+  background-color: #224e3b;
+}
+
+.dark .info-bar {
+  background-color: #111;
 }
 
 /* ======================================================
@@ -133,13 +171,15 @@ header p {
    BOTÃO DE TEMA (SWITCH)
 ====================================================== */
 #temaBtn {
+  display: flex;
   width: 60px;
   height: 30px;
+  margin-top: 23px;
   border-radius: 999px;
   background-color: #e5e7eb;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -179,6 +219,7 @@ header p {
 #temaBtn {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   cursor: pointer;
 }
@@ -187,12 +228,14 @@ header p {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: #ffd900;
+}
+.light #temaBtn {
+  background-color: #2d794a;
+  box-shadow: inset #00000056 2px 2px 7px;
 }
 
-body.light #temaBtn .icon {
-  color: #000;
-}
+
 
 /* ======================================================
    MENU LATERAL (MOBILE)
@@ -409,17 +452,18 @@ button {
   }
 
   #temaBtn {
-    display: flex;
+    
     align-items: center;
     gap: 6px;
     cursor: pointer;
+    justify-content: center;
   }
 
   #temaBtn .icon {
-    display: flex;
+    
     align-items: center;
     justify-content: center;
-    color: #fff;
+    
   }
 
   body.light #temaBtn .icon {
@@ -470,11 +514,11 @@ button {
 }
 
 .dark #desktopNav .nav-link {
-  color: #dcdcdc;
+  color: #ffffff;
 }
 
 .dark #desktopNav .nav-link:hover {
-  color: white;
+  color: #1688e6;
 }
 
 /* ======================================================
@@ -536,3 +580,8 @@ button {
   position: absolute;
   left: 4px;
 }
+
+/* ======================================================
+   SCROLLBAR PERSONALIZADA
+====================================================== */
+
