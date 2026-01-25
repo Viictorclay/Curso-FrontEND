@@ -1,6 +1,6 @@
 .light {
   --scroll-track: #e5e5e5;
-  --scroll-thumb: #2e7d5a;
+  --scroll-thumb: #999999;
   --scroll-thumb-hover: #1f5a40;
 
   --bg: #ffffff;
@@ -9,7 +9,7 @@
 
 .dark {
   --scroll-track: #121212;
-  --scroll-thumb: #145991;
+  --scroll-thumb: #1d374d;
   --scroll-thumb-hover: #72b0e2;
 
   --bg: #0f0f0f;

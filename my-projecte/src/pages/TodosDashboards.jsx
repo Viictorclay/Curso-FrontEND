@@ -1,6 +1,18 @@
 import { useEffect, useState } from "react";
 import "../assets/css/todosDashboards/TDstyler.css";
 
+// converte a data apenas se vier no formato ISO (YYYY-MM-DD)
+function formatarDataSeNecessario(data) {
+  if (!data) return "";
+
+  // se já estiver no formato brasileiro
+  if (data.includes("/")) return data;
+
+  // se vier ISO
+  const [ano, mes, dia] = data.split("-");
+  return `${dia}/${mes}/${ano}`;
+}
+
 function TodosDashboards() {
   const [dashboards, setDashboards] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
@@ -18,9 +30,7 @@ function TodosDashboards() {
   function excluirDashboard(index) {
     if (!window.confirm("Deseja excluir este dashboard?")) return;
 
-    const novosDashboards = dashboards.filter(
-      (_, i) => i !== index
-    );
+    const novosDashboards = dashboards.filter((_, i) => i !== index);
 
     localStorage.setItem(
       "dashboards",
@@ -125,9 +135,7 @@ function TodosDashboards() {
                 <h3>{item.nome}</h3>
 
                 <span
-                  className={`estrela ${
-                    item.favorito ? "ativa" : ""
-                  }`}
+                  className={`estrela ${item.favorito ? "ativa" : ""}`}
                   onClick={() => toggleFavorito(index)}
                   title="Favoritar"
                 >
@@ -147,7 +155,9 @@ function TodosDashboards() {
               </a>
 
               {item.data && (
-                <small className="data"> {item.data}</small>
+                <small className="data">
+                  {formatarDataSeNecessario(item.data)}
+                </small>
               )}
 
               <div className="acoes">

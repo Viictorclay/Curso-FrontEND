@@ -1,6 +1,18 @@
 import { useEffect, useState } from "react";
 import "../assets/css/home/HOstyler.css";
 
+// converte SOMENTE se vier em formato ISO
+function formatarDataSeNecessario(data) {
+  if (!data) return "";
+
+  // se já estiver no formato BR
+  if (data.includes("/")) return data;
+
+  // se vier ISO: YYYY-MM-DD
+  const [ano, mes, dia] = data.split("-");
+  return `${dia}/${mes}/${ano}`;
+}
+
 function Home() {
   const [dashboards, setDashboards] = useState([]);
   const [search, setSearch] = useState("");
@@ -11,7 +23,7 @@ function Home() {
     setDashboards(dados);
   }, []);
 
-  // Filtra pelo nome e pega os 3 últimos
+  // Filtra pelo nome e pega os 4 últimos
   const dashboardsFiltrados = dashboards
     .filter(d =>
       d.nome.toLowerCase().includes(search.toLowerCase())
@@ -35,7 +47,6 @@ function Home() {
         {dashboardsFiltrados.map((item, index) => (
           <div className="card" key={index}>
 
-            {/* IMAGEM (controlada via CSS) */}
             {item.imagem && (
               <img
                 src={item.imagem}
@@ -44,13 +55,14 @@ function Home() {
               />
             )}
 
-            {/* INFORMAÇÕES */}
             <div className="card-info">
               <h3>{item.nome}</h3>
               <p>{item.descricao}</p>
 
               {item.data && (
-                <small className="data">{item.data}</small>
+                <small className="data">
+                  {formatarDataSeNecessario(item.data)}
+                </small>
               )}
 
               <a
@@ -65,7 +77,6 @@ function Home() {
           </div>
         ))}
 
-        {/* CASO NÃO TENHA DASHBOARD */}
         {dashboardsFiltrados.length === 0 && (
           <p className="vazio">Nenhum dashboard encontrado.</p>
         )}

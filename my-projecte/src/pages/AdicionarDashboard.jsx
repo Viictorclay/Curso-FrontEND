@@ -1,6 +1,13 @@
 import { useState } from "react";
 import "../assets/css/adicionarDashboard/styler.css";
 
+// função de conversão
+function formatarDataBR(dataISO) {
+  if (!dataISO) return "";
+  const [ano, mes, dia] = dataISO.split("-");
+  return `${dia}/${mes}/${ano}`;
+}
+
 function AdicionarDashboard() {
   const [imagePreview, setImagePreview] = useState(null);
 
@@ -28,6 +35,7 @@ function AdicionarDashboard() {
 
     dashboardsSalvos.push({
       ...dashboard,
+      data: formatarDataBR(dashboard.data), // ✅ conversão AQUI
       imagem: imagePreview
     });
 
