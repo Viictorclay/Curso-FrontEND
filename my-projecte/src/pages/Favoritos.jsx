@@ -37,7 +37,7 @@ function Favoritos() {
   return (
     <div className="conteudo">
       <h2>⭐ Favoritos</h2>
-      <p>Seus dashboards favoritos aparecem aqui.</p>
+      <p>Seus dashboards favoritos apareceram aqui.</p>
 
       {favoritos.length === 0 && (
         <p className="vazio">Nenhum dashboard favoritado.</p>

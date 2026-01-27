@@ -161,7 +161,10 @@ function TodosDashboards() {
               )}
 
               <div className="acoes">
-                <button onClick={() => iniciarEdicao(index)}>
+                <button 
+                  className="btn-editar"
+                  onClick={() => iniciarEdicao(index)}
+                  >
                   ✏️ Editar
                 </button>
 

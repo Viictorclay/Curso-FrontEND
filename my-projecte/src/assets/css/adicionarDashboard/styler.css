@@ -200,6 +200,21 @@ iframe {
   margin-bottom: 1.5rem;
   text-align: left;
 }
+.light h2 {
+  color: #ffffff;
+}
+
+.light .conteudo h2 {
+  color: #1d1d1d;
+}
+/* Estilo para parágrafos dentro do conteúdo */
+
+.conteudo p {
+  color: #818386;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
 
 /* ======== TÍTULO E FILTRO ======== */
 /* Contêiner para título e barra de pesquisa */
@@ -269,6 +284,8 @@ iframe {
 .form-filtro button:hover {
   background-color: #1e40af;
 }
+
+
 
 /* ======== TABELA DE LISTAGEM ======== */
 /* Container geral da tabela */
@@ -479,9 +496,21 @@ legend {
   transform: scale(1.05);
 }
 
+/* Botão "Editar" */
+.btn-editar {
+  background-color: #3b82f6;
+  color: white;
+}
+
+/* Efeito hover do botão "Editar" */
+.btn-editar:hover {
+  background-color: #1d4ed8;
+  transform: scale(1.05);
+}
+
 /* ======== RESPONSIVIDADE ======== */
 /* Regras para telas menores (tablets e celulares) */
-@media (max-width: 768px) {
+@media (max-width: 350px) {
   .conteudo {
     padding: 1.2rem;
     margin: 1rem;

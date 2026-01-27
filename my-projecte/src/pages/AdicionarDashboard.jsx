@@ -58,7 +58,7 @@ function AdicionarDashboard() {
 
   return (
     <div className="conteudo">
-      <h2>Adicionar Dashboard</h2>
+      <h2>📊 Adicionar Dashboard</h2>
       <p>Adicione um novo dashboard preenchendo o formulário abaixo.</p>
 
       <form onSubmit={handleSubmit}>
