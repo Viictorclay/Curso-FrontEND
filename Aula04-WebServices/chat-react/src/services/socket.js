@@ -1,6 +1,6 @@
 import { io } from 'socket.io-client';
 
-const socket = io('http://localhost:3001');
+const socket = io('https://floating-chat.onrender.com'); // URL do servidor Socket.io
 
 // Logs úteis para debug da conexão socket no cliente
 socket.on('connect', () => {
